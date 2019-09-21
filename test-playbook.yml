@@ -9,6 +9,5 @@
 
 - name: Apply for ubuntu
   hosts: all
-  become: yes
   roles:
     - docker

@@ -9,7 +9,9 @@ provisioner:
   playbook: "./test-playbook.yml"
   verbose: "v"
   diff: true
-  sudo: true
+
+verifier:
+  name: inspec
 
 platforms:
   - name: ubuntu
@@ -20,3 +22,6 @@ suites:
   - name: default
     provisioner:
     playbook: "./test-playbook.yml"
+    verifier:
+      inspec_tests:
+        - ./test/integration/default/
