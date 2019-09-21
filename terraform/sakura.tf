@@ -42,6 +42,7 @@ resource "sakuracloud_server" "server01" {
   core = 2
   memory = 2
   disks = ["${sakuracloud_disk.disk01.id}"]
+  packet_filter_ids = ["113101615788"]
 
   ssh_key_ids     = ["${sakuracloud_ssh_key_gen.key.id}"]
   disable_pw_auth = true
