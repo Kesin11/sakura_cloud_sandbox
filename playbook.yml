@@ -1,0 +1,4 @@
+- hosts: sakura
+  become: yes
+  roles:
+    - docker
