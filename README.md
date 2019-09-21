@@ -25,6 +25,16 @@ venv/bin/pip3 install -r requirements.txt
 
 # 疎通確認
 venv/bin/ansible -i hosts sakura_cloud -m ping
+
+# 本番はubuntuユーザー、test-kitchenではkitchenユーザーとして実行する
+# そのため事前にサーバーにsshしてsudoresの設定をしておく
+ssh ubuntu@sakura_cloud -i terraform/id_rsa_sakura_cloud
+# ssh先で以下のsudoers設定を作成する
+$ sudo visudo -f /etc/sudoers.d/ubuntu
+```
+ubuntu	ALL=(ALL) NOPASSWD: ALL
+```
+
 # 実行
 venv/bin/ansible-playbook -i hosts playbook.yml --private-key=terraform/id_rsa_sakura_cloud
 ```
