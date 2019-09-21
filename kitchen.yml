@@ -1,0 +1,22 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: ansible_push
+  ansible_playbook_bin: ./venv/bin/ansible-playbook
+  chef_bootstrap_url: nil
+  playbook: "./test-playbook.yml"
+  verbose: "v"
+  diff: true
+  sudo: true
+
+platforms:
+  - name: ubuntu
+    image: ubuntu:18.04
+    platform: ubuntu
+
+suites:
+  - name: default
+    provisioner:
+    playbook: "./test-playbook.yml"

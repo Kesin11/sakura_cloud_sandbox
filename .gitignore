@@ -203,3 +203,6 @@ build-iPhoneSimulator/
 
 # python venv dir
 venv
+
+# test-kitchen
+.kitchen/

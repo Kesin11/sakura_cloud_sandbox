@@ -1,0 +1,14 @@
+- name: Check for python2.7
+  hosts: all
+  gather_facts: False
+  become: True
+  tasks:
+    - name: install python 2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      changed_when: False
+
+- name: Apply for ubuntu
+  hosts: all
+  become: yes
+  roles:
+    - docker
