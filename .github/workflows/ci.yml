@@ -18,6 +18,11 @@ jobs:
     - name: pip install
       run: venv/bin/pip3 install -r requirements.txt
 
+    - name: Setup Ruby version
+      uses: actions/setup-ruby@master
+      with:
+        version: 2.6.x
+
     - name: Setup bundler
       run: gem install bundler
 
