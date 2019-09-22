@@ -5,6 +5,7 @@
     ":prConcurrentLimit10",
     ":timezone(Asia/Tokyo)"
   ],
+  "masterIssue": true,
   "bundler": {
     "enabled": true,
     "extends": [
