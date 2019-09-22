@@ -5,6 +5,11 @@ jobs:
   test-kitchen:
     runs-on: ubuntu-latest
     steps:
+    - name: Install python3-venv
+      run: |
+        sudo apt-get update
+        sudo apt-get install python3-venv
+
     - name: Setup venv
       run: python3 -m venv venv
     
