@@ -20,7 +20,7 @@ Pythonのvenvでインストールするansibleから実行する
 vim ~/.ssh/config
 
 # ansibleの用意
-python3 venv venv
+python3 -m venv venv
 venv/bin/pip3 install -r requirements.txt
 
 # 疎通確認
@@ -48,5 +48,5 @@ playbookのテスト
 # test-kitchenをセットアップ
 bundle install --path=vendor
 # 実行
-bundle exec kitchen converge
+bundle exec kitchen test -d never
 ```

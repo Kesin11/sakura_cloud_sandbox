@@ -1,0 +1,33 @@
+name: "test-kitchen"
+on: push
+
+jobs:
+  test-kitchen:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Install python3-venv
+      run: |
+        sudo apt-get update
+        sudo apt-get install python3-venv
+
+    - name: Setup venv
+      run: python3 -m venv venv
+    
+    - name: pip install
+      run: venv/bin/pip3 install -r requirements.txt
+
+    - name: Setup Ruby version
+      uses: actions/setup-ruby@master
+      with:
+        version: 2.6.x
+
+    - name: Setup bundler
+      run: gem install bundler
+
+    - name: bundle install
+      run: bundle install --jobs 4 --retry 3 --path=vendor
+    
+    - name: kitchen test
+      run: bundle exec kitchen test
