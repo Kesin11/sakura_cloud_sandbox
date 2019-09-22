@@ -1,5 +1,20 @@
 {
   "extends": [
-    "config:base"
-  ]
+    ":ignoreModulesAndTests",
+    ":label(renovate)",
+    ":prConcurrentLimit10",
+    ":timezone(Asia/Tokyo)"
+  ],
+  "bundler": {
+    "enabled": true,
+    "packageRules": [
+      {
+        "groupName": "test-kitchen and extensions",
+        "packageNames": ["test-kitchen"],
+        "packagePatterns": ["^kitchen-"]
+      }
+    ]
+  },
+  "python": {
+  }
 }
