@@ -1,0 +1,18 @@
+name: "test-kitchen"
+on: push
+
+jobs:
+  test-kitchen:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup venv
+      run: python3 -m venv venv
+    
+    - name: pip install
+      run: venv/bin/pip3 install -r requirements.txt
+
+    - name: bundle install
+      run: bundle install --path=vendor
+    
+    - name: kitchen test
+      run: bundle exec kitchen test
