@@ -1,4 +1,4 @@
-# さくらクラウドのサーバーを建てる練習
+# さくらクラウドのサーバーを建てる練習 + renovate セルフホスティング
 ## terraform
 さくらクラウドのサーバーをterraformで構築する。  
 パケットフィルタだけはterraformで構築後にwebから設定。
@@ -49,4 +49,18 @@ playbookのテスト
 bundle install --path=vendor
 # 実行
 bundle exec kitchen test -d never
+```
+
+## renovate セルフホスティング
+see: https://github.com/renovatebot/renovate/blob/master/docs/development/self-hosting.md
+
+セルフホスティング用のconfig.js追加と、まだalpha版のruby gemsに対応するためワークアラウンドを入れたDockerfileを自前で用意しています。  
+ruby gemsについては詳しくはDockerfileを参照。
+
+```bash
+# build
+docker build -t my/renovate:latest .
+
+# run
+docker run -e=RENOVATE_TOKEN=${GITHUB_AUTH_TOKEN} my/renovate
 ```
