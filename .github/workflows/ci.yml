@@ -31,3 +31,13 @@ jobs:
     
     - name: kitchen test
       run: bundle exec kitchen test
+      env:
+        JUNIT_OUTPUT_DIR: junit
+
+    - run: ls
+    - run: ls junit
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: junit
+        path: junit
